@@ -5,7 +5,7 @@ export default function PostList() {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('https://web-production-63555.up.railway.app/posts?userid=1')
+    fetch('https://web-production-63555.up.railway.app/posts?userid=8')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
