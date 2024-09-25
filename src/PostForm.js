@@ -29,7 +29,7 @@ export default function PostForm() {
     })
     .then(data => {
       console.log('Success:', data);
-      navigate('/');
+      navigate(`/${userId}`);
     })
     .catch(error => {
       console.error('Error:', error);
