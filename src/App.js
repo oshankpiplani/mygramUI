@@ -13,7 +13,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/create" element={<PostForm />} />
-          <Route path="/" element={<PostList />} />
+          <Route path="/:userid" element={<PostList />} />
           <Route path="/post/:id" element={<PostDetail />} />
         </Routes>
       </div>
