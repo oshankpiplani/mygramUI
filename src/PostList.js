@@ -5,7 +5,7 @@ export default function PostList() {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('https://localhost:8000/posts?userid=1')
+    fetch('http://localhost:8000/posts?userid=1')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -28,7 +28,7 @@ export default function PostDetail() {
   };
 
   const fetchComments = useCallback(() => {
-    fetch(`https://localhost:8000/posts/${id}/comments`)
+    fetch(`http://localhost:8000/posts/${id}/comments`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');
@@ -43,7 +43,7 @@ export default function PostDetail() {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://localhost:8000/posts/${id}`)
+      fetch(`http://localhost:8000/posts/${id}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error('Network response was not ok');

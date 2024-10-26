@@ -13,7 +13,7 @@ export default function PostForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`https://localhost:8000/posts?userid=${userId}`, {
+    fetch(`http://localhost:8000/posts?userid=${userId}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
