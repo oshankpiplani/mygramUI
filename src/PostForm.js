@@ -13,7 +13,7 @@ export default function PostForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`https://web-production-63555.up.railway.app/posts?userid=${userId}`, {
+    fetch(`https://localhost:8000/posts?userid=${userId}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

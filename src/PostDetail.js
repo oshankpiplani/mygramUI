@@ -28,7 +28,7 @@ export default function PostDetail() {
   };
 
   const fetchComments = useCallback(() => {
-    fetch(`https://web-production-63555.up.railway.app/posts/${id}/comments`)
+    fetch(`https://localhost:8000/posts/${id}/comments`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');
@@ -43,7 +43,7 @@ export default function PostDetail() {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://web-production-63555.up.railway.app/posts/${id}`)
+      fetch(`https://localhost:8000/posts/${id}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error('Network response was not ok');
@@ -72,7 +72,7 @@ export default function PostDetail() {
   };
 
   const toggleLike = () => {
-    const url = `https://web-production-63555.up.railway.app/posts/${id}/${isLiked ? 'unlike' : 'likes'}`;
+    const url = `https://localhost:8000/posts/${id}/${isLiked ? 'unlike' : 'likes'}`;
     fetch(url, {
       method: 'POST',
       headers: {
@@ -97,7 +97,7 @@ export default function PostDetail() {
   };
 
   const handleComment = () => {
-    fetch(`https://web-production-63555.up.railway.app/posts/${id}/comments`, {
+    fetch(`https://localhost:8000/posts/${id}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
