@@ -16,7 +16,7 @@ async function getUserInfo(codeResponse) {
 }
 
 async function getProtected() {
-  var response = await fetch("/protected", {
+  var response = await fetch("http://localhost:8000/protected", {
     method: "GET",
     credentials: "include",
     mode: "cors",
