@@ -5,7 +5,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import UserAvatar from "./userAvatar";
 
 async function getUserInfo(codeResponse) {
-  var response = await fetch("/google_login", {
+  var response = await fetch("http://localhost:8000/google_login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
