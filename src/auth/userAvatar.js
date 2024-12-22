@@ -2,6 +2,7 @@ import Avatar from "@mui/material/Avatar";
 import React, { useState } from "react";
 
 export default function UserAvatar({ userName, onClick }) {
+  console.log("Inside avatar",userName)
   return <Avatar {...stringAvatar(userName)} onClick={() => onClick()} />;
 }
 
