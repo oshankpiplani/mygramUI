@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { getCookie } from "./authService";
 export default function PostForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,11 +13,14 @@ export default function PostForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:8000/posts?userid=${userId}`, {
+    // need to header
+    fetch(`http://localhost:8000/posts`, {
       method: 'POST',
+      credentials:'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        "X-CSRF-TOKEN": getCookie("csrf_access_token"), 
       },
       body: JSON.stringify({ title, description, userId }),
     })
