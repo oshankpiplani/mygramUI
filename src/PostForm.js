@@ -32,7 +32,7 @@ export default function PostForm() {
     })
     .then(data => {
       console.log('Success:', data);
-      navigate(`/${userId}`);
+      navigate('/posts');
     })
     .catch(error => {
       console.error('Error:', error);

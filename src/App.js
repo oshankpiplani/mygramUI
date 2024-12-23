@@ -6,9 +6,12 @@ import PostForm from "./PostForm";
 import PostList from "./PostList";
 import PostDetail from "./PostDetail";
 import Header from "./Header";
+import { AuthProvider } from "./contexts/AuthProvider";
+
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <div className="App">
         <Header />
@@ -21,6 +24,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
