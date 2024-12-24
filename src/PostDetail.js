@@ -7,6 +7,7 @@ import comment1 from "./images/comment-icon-1024x964-julk98bl.png";
 import './App.css'; 
 
 export default function PostDetail() {
+  const base_url = process.env.BACKEND_URL
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
@@ -28,7 +29,7 @@ export default function PostDetail() {
   };
 
   const fetchComments = useCallback(() => {
-    fetch(`http://localhost:8000/posts/${id}/comments`)
+    fetch(`${base_url}/posts/${id}/comments`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');
@@ -43,7 +44,7 @@ export default function PostDetail() {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/posts/${id}`)
+      fetch(`${base_url}/posts/${id}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error('Network response was not ok');
@@ -72,7 +73,7 @@ export default function PostDetail() {
   };
 
   const toggleLike = () => {
-    const url = `https://localhost:8000/posts/${id}/${isLiked ? 'unlike' : 'likes'}`;
+    const url = `${base_url}/posts/${id}/${isLiked ? 'unlike' : 'likes'}`;
     fetch(url, {
       method: 'POST',
       headers: {
@@ -97,7 +98,7 @@ export default function PostDetail() {
   };
 
   const handleComment = () => {
-    fetch(`https://localhost:8000/posts/${id}/comments`, {
+    fetch(`${base_url}/posts/${id}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

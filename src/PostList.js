@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 export default function PostList() {
+    const base_url = process.env.BACKEND_URL
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('http://localhost:8000/posts', {
+    fetch(`${base_url}/posts`, {
       method: 'GET',
       credentials: 'include', 
     })
