@@ -4,7 +4,7 @@ import { getCookie } from "./authService";
 export default function PostForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [userId, setUserId] = useState("");
+
   const [placeholder1, setPlaceholder1] = useState('Title');
   const [placeholder2, setPlaceholder2] = useState('Description');
 
@@ -38,7 +38,6 @@ export default function PostForm() {
     });
     setTitle("");
     setDescription("");
-    setUserId("");
   };
 
   const handleFocus1 = () => {
