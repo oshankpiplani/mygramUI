@@ -5,10 +5,11 @@ import { authContext } from "./contexts/AuthProvider";
 import googleIcon from "./images/web_light_rd_ctn@1x.png"
 import crossIcon from "./images/radix-icons-cross-1-icon.png"
 export default function Login(props){
-    const base_url = process.env.BACKEND_URL
+    const base_url = process.env.REACT_APP_BACKEND_URL
     const { login } = React.useContext(authContext);
     const navigate = useNavigate();
     async function getUserInfo(codeResponse) {
+        console.log(base_url)
         var response = await fetch(`${base_url}/google_login`, {
           method: "POST",
           credentials: 'include',
@@ -30,6 +31,9 @@ export default function Login(props){
 
           navigate("/posts");
         },
+        onFailure: (error) => {
+            console.log("Login failed: ", error);
+        }
       });
     return(
         <div>

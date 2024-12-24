@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "./authService";
 export default function PostForm() {
-  const base_url = process.env.BACKEND_URL
+  const base_url = process.env.REACT_APP_BACKEND_URL
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 

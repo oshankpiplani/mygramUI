@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 export default function PostList() {
-    const base_url = process.env.BACKEND_URL
+    const base_url = process.env.REACT_APP_BACKEND_URL
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {

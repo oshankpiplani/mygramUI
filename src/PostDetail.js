@@ -7,7 +7,7 @@ import comment1 from "./images/comment-icon-1024x964-julk98bl.png";
 import './App.css'; 
 
 export default function PostDetail() {
-  const base_url = process.env.BACKEND_URL
+  const base_url = process.env.REACT_APP_BACKEND_URL
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);

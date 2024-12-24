@@ -3,7 +3,7 @@ import { authContext } from "./contexts/AuthProvider";
 import {  getCookie } from "./authService";
 import { useNavigate } from "react-router-dom";
 export default function Logout(props){
-    const base_url = process.env.BACKEND_URL
+    const base_url = process.env.REACT_APP_BACKEND_URL
     const navigate = useNavigate();
     const { logout} = React.useContext(authContext);
     const handleLogout = async () => {
