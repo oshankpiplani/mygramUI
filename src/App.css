@@ -271,6 +271,11 @@ form div {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  width: 300px;
+  height:600px;
+  width: 500px;
   text-align: center;
+}
+.cross-button {
+  width: 20px;
+  padding-left: 95%;
 }
