@@ -18,6 +18,12 @@ export default function Login(props){
           },
           body: JSON.stringify({ code: codeResponse.code }),
         });
+        const csrfToken = response.headers.get("X-CSRF-TOKEN");
+        if (csrfToken) {
+            console.log("CSRF Token:", csrfToken);
+            // Store CSRF token securely (e.g., in localStorage or a React context)
+            document.cookie = `csrf_access_token=${csrfToken}; Path=/; Secure; SameSite=None`;
+        }
         return await response.json();
       }
 
