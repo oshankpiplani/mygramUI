@@ -10,12 +10,22 @@ export default function Home(){
             method: 'GET',
             credentials: 'include',
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (res.ok) {  // Check if the response status is 200-299
+                    return res.json();
+                } else {
+                    throw new Error('Failed to fetch user data');
+                }
+            })
             .then((data) => {
                 console.log(data);
                 login(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);  // Handle errors (like non-200 responses)
             });
     }, [base_url]);
+
 
 
     return (
