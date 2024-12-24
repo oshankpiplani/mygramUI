@@ -2,6 +2,8 @@ import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom"; 
 import { authContext } from "./contexts/AuthProvider";
+import googleIcon from "./images/web_light_rd_ctn@1x.png"
+import crossIcon from "./images/radix-icons-cross-1-icon.png"
 export default function Login(props){
     const { login } = React.useContext(authContext);
     const navigate = useNavigate();
@@ -33,13 +35,15 @@ export default function Login(props){
         <button onClick={props.openModel}>Login</button>
         {props.isOpen && (
         <div className="modal-backdrop">
-          <div className="modal">
-            <h2>Welcome to Mygram</h2>
-            <button onClick={handleLogin}>Sign in with Google</button>
-            <button onClick={props.closeModal}>Close</button>
-          </div>
+            <div className="modal">
+                <img src={crossIcon} alt="closeButton" onClick={props.closeModal} className="cross-button"/>
+                <h1 className="header-text">Welcome to mYgram</h1>
+                <img src={googleIcon} alt="googleIcon" onClick={handleLogin} className="google-button"/>
+
+
+            </div>
         </div>
-      )}
+        )}
         </div>
     );
 

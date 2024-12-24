@@ -7,13 +7,12 @@ export default function PostForm() {
   const [userId, setUserId] = useState("");
   const [placeholder1, setPlaceholder1] = useState('Title');
   const [placeholder2, setPlaceholder2] = useState('Description');
-  const [placeholder3, setPlaceholder3] = useState('UserId');
+
   
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // need to header
     fetch(`http://localhost:8000/posts`, {
       method: 'POST',
       credentials:'include',
@@ -22,7 +21,7 @@ export default function PostForm() {
         'Content-Type': 'application/json',
         "X-CSRF-TOKEN": getCookie("csrf_access_token"), 
       },
-      body: JSON.stringify({ title, description, userId }),
+      body: JSON.stringify({ title, description}),
     })
     .then(response => {
       if (!response.ok) {
@@ -60,15 +59,7 @@ export default function PostForm() {
       setPlaceholder2('Description');
     }
   };
-  const handleFocus3 = () => {
-    setPlaceholder3('');
-  };
 
-  const handleBlur3 = () => {
-    if (userId === '') {
-      setPlaceholder3('User Id');
-    }
-  };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -93,17 +84,8 @@ export default function PostForm() {
           onBlur={handleBlur2}
         />
       </div>
-      <div>
-        <input
-          className="form-input3"
-          type="text"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-          placeholder={placeholder3}
-          onFocus={handleFocus3}
-          onBlur={handleBlur3}
-        />
-      </div>
+
+
       <button className="submit-button" type="submit">Submit</button>
     </form>
   );
