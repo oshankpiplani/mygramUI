@@ -40,7 +40,7 @@ export default function PostDetail() {
         setComments(data);
       })
       .catch((error) => console.error("Error fetching comments:", error));
-  }, [id]);
+  }, [id,base_url]);
 
   useEffect(() => {
     if (id) {
@@ -62,7 +62,7 @@ export default function PostDetail() {
 
       fetchComments();
     }
-  }, [id, fetchComments]);
+  }, [id, fetchComments,base_url]);
 
   const formatDate = (datetime) => {
     const date = new Date(datetime);
