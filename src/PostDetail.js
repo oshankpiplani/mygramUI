@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faSolidHeart, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import comment1 from "./images/comment-icon-1024x964-julk98bl.png";
-import './App.css'; 
+import './App.css';
+import {getCookie} from "./authService";
 
 export default function PostDetail() {
   const base_url = process.env.REACT_APP_BACKEND_URL
@@ -76,8 +77,10 @@ export default function PostDetail() {
     const url = `${base_url}/posts/${id}/${isLiked ? 'unlike' : 'likes'}`;
     fetch(url, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        "X-CSRF-TOKEN": getCookie("csrf_access_token"),
       },
       body: JSON.stringify({ user_id: userId }),
     })
@@ -100,8 +103,10 @@ export default function PostDetail() {
   const handleComment = () => {
     fetch(`${base_url}/posts/${id}/comments`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        "X-CSRF-TOKEN": getCookie("csrf_access_token"),
       },
       body: JSON.stringify({ user_id: userId, content: comment }),
     })
