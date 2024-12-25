@@ -23,26 +23,47 @@ export default function Login(props){
         console.log(response);
         if (csrfToken) {
             console.log("CSRF Token:", csrfToken);
-            // Store CSRF token securely (e.g., in localStorage or a React context)
+
             document.cookie = `csrf_access_token=${csrfToken}; Path=/; Secure; SameSite=None`;
         }
         return await response.json();
       }
 
-    
+
     const handleLogin = useGoogleLogin({
         flow: "auth-code",
         onSuccess: async (codeResponse) => {
-          const loginDetails = await getUserInfo(codeResponse);
-          console.log("login details",loginDetails.user)
-          login(loginDetails.user)
+            try {
+                const loginDetails = await getUserInfo(codeResponse);
+                const user = loginDetails.user;
 
-          navigate("/posts");
+                const response = await fetch(`${base_url}/users`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        name: user.name,
+                        email: user.email,
+                    }),
+                });
+
+                const result = await response.json();
+                console.log(result.message);
+
+                // Proceed with login and navigation
+                login(user);
+                navigate("/posts");
+
+            } catch (error) {
+                console.error("Error during login process: ", error);
+            }
         },
         onFailure: (error) => {
             console.log("Login failed: ", error);
         }
-      });
+    });
+
     return(
         <div>
         <button onClick={props.openModel}>Login</button>
