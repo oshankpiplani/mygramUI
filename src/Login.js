@@ -66,7 +66,9 @@ export default function Login(props){
 
     return(
         <div>
-        <button onClick={props.openModel}>Login</button>
+            <div className="button-div">
+                <button className="log-in-button" onClick={props.openModel}>Log in</button>
+            </div>
         {props.isOpen && (
         <div className="modal-backdrop">
             <div className="modal">

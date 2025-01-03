@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <div className="header-logo">
       <h1 className="header-text">mYgram</h1>
-      {loggedIn ?(<div><Link to="/create">
+      {loggedIn ?(<div className="create-post"><Link to="/create">
         <img className="header-newpost" src={create} alt="Create new post" />
       </Link>
       <Logout closeModal = {closeModal} />
