@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import {authContext} from "./contexts/AuthProvider";
 import pic1 from "./images/new1.jpeg"
 import pic2 from "./images/new2.jpeg"
